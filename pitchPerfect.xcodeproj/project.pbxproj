@@ -60,8 +60,8 @@
 			children = (
 				6A290EA023CE7966002CDCD2 /* AppDelegate.swift */,
 				6A290EA223CE7966002CDCD2 /* SceneDelegate.swift */,
-				6A290EA423CE7966002CDCD2 /* RecordSoundsViewController.swift */,
 				6A007AE223D23A69008B7BCB /* PlaySoundsViewController.swift */,
+				6A290EA423CE7966002CDCD2 /* RecordSoundsViewController.swift */,
 				6A290EA623CE7966002CDCD2 /* Main.storyboard */,
 				6A290EA923CE7968002CDCD2 /* Assets.xcassets */,
 				6A290EAB23CE7968002CDCD2 /* LaunchScreen.storyboard */,

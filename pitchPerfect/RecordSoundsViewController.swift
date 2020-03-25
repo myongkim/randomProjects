@@ -31,9 +31,8 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     }
 
     @IBAction func recordAudio(_ sender: UIButton) {
-        recordingLabel.text = "Recording in Progress"
-        stopRecordingButton.isEnabled = true
-        recordButton.isEnabled = false
+
+        buttonPressConfigureUI()
         
         let dirPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
         let recordingName = "recordedVoice.wav"
@@ -55,9 +54,8 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     
     
     @IBAction func stopRecording(_ sender: Any) {
-        stopRecordingButton.isEnabled = false
-        recordButton.isEnabled = true
-        recordingLabel.text = "Tap to Record"
+
+        buttonPressConfigureUI()
         
         audioRecorder.stop()
         let audioSession = AVAudioSession.sharedInstance()
@@ -73,6 +71,28 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "stopRecording" {
+            let playSoundVC = segue.destination as! PlaySoundsViewController
+            let redordedAudioURL = sender as! URL
+            playSoundVC.recordedAuioURL = redordedAudioURL
+            
+            
+        }
+    }
+    
+    func buttonPressConfigureUI() {
+        if recordButton.isTouchInside == true {
+             recordingLabel.text = "Recording in Progress"
+             stopRecordingButton.isEnabled = true
+             recordButton.isEnabled = false
+        }
+        else if stopRecordingButton.isTouchInside == true {
+               stopRecordingButton.isEnabled = false
+               recordButton.isEnabled = true
+               recordingLabel.text = "Tap to Record"
+        }
+    }
     
 }
 
